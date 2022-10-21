@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ApiComponent } from './api/api.component';
+
 import { ApiService } from './services/api.service';
 import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users/users.component';
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'users', component: UsersComponent },
-  { path: 'users/:name', component: UserComponent },
+  { path: 'users/:name/:id', component: UserComponent },
 
   // { path: 'users/:id/:name', component: UserComponent },
 ];
@@ -24,7 +24,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ApiComponent,
     UserComponent,
     UsersComponent,
     NavbarComponent,

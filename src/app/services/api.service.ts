@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces/user';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ApiService {
   private usersUrl = 'https://jsonplaceholder.typicode.com';
-  users: IUser | undefined;
+  users: IUser | any;
 
   constructor(private http: HttpClient) {}
 
@@ -13,27 +14,23 @@ export class ApiService {
     return this.http.get<IUser>(this.usersUrl + '/users');
   }
 
-  // showData() {
-  //   this.getData().subscribe((data) => {
-  //     this.users = { ...data };
-  //     console.log(this.users);
-  //   });
-  // }
+  getUsers() {
+    return this.users;
+  }
 
-  //   showData() {
-  //     this.getData().subscribe(
-  //       (data) =>
-  //         (this.config = {
-  //           name: data.name,
-  //           id: data.id,
-  //           username: data.username,
-  //           website: data.website,
-  //           phone: data.phone,
-  //           email: data.email,
-  //           address: data.address,
-  //           company: data.company,
-  //         })
-  //     );
-  //     console.log(this.config);
-  //   }
+  findUser(id: number) {
+    const user = this.users.find((u) => {
+      return u.id === id;
+    });
+    return user;
+  }
+
+  showData() {
+    this.getData()
+      .pipe(map((response: any) => response))
+      .subscribe((data) => {
+        this.users = data;
+        console.log(this.users);
+      });
+  }
 }

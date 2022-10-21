@@ -39,3 +39,20 @@
 .lh-150 {
   line-height: 1.5;
 }
+
+.user-text {
+  margin-left: 29px;
+}
+
+.user-icon {
+  width: 14px;
+  margin-left: 10px;
+}
+
+.bio-icon {
+  margin: auto;
+}
+
+.bio-text {
+  padding-top: 10px;
+}

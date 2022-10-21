@@ -2,144 +2,110 @@
   <div
     class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm"
   >
-    <img class="mr-3" src="" alt="" width="48" height="48" />
+    <img
+      class="mr-3"
+      src="{{ portret.url }}"
+      alt="{{ user.name }}"
+      width="100"
+      height="100"
+    />
     <div class="lh-100">
-      <h6 class="mb-0 text-white lh-100">Name</h6>
-      <small>cOMPANY</small>
+      <h6 class="mb-0 text-white lh-10 user-text">
+        {{ user.name }} ({{ user.username }})
+      </h6>
+      <small class="credentials"
+        ><img class="user-icon" src="../../assets/phone-icon.svg" />
+        {{ user.phone }}</small
+      >
+      <small
+        ><img class="user-icon" src="../../assets/email-icon.svg" />
+        {{ user.email }}</small
+      >
+      <small
+        ><img class="user-icon" src="../../assets/safari-icon.svg" />
+        {{ user.website }}</small
+      >
     </div>
   </div>
 
   <div class="my-3 p-3 bg-white rounded shadow-sm">
     <h6 class="border-bottom border-gray pb-2 mb-0">Bio</h6>
-    <div class="media text-muted pt-3">
-      <svg
-        class="bd-placeholder-img mr-2 rounded"
-        width="32"
-        height="32"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-        aria-label="Placeholder: 32x32"
+    <div class="list-group w-auto">
+      <a
+        href="#"
+        class="list-group-item list-group-item-action d-flex gap-3 py-3"
+        aria-current="true"
       >
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#007bff" />
-        <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-      </svg>
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@username</strong>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
-        ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
-        justo sit amet risus.
-      </p>
-    </div>
-    <div class="media text-muted pt-3">
-      <svg
-        class="bd-placeholder-img mr-2 rounded"
-        width="32"
-        height="32"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-        aria-label="Placeholder: 32x32"
+        <img
+          src="../../assets/cursor-icon.svg"
+          alt="twbs"
+          width="32"
+          height="32"
+          class="rounded-circle flex-shrink-0"
+        />
+        <div class="d-flex gap-2 w-100 justify-content-between">
+          <div>
+            <h6 class="mb-0">City: {{ user.address.city }}</h6>
+            <p class="mb-0 opacity-75">
+              lat: {{ user.address.geo.lat }} <br />
+              long: {{ user.address.geo.lng }}
+            </p>
+          </div>
+          <!-- <small class="opacity-50 text-nowrap">now</small> -->
+        </div>
+      </a>
+      <a
+        href="#"
+        class="list-group-item list-group-item-action d-flex gap-3 py-3"
+        aria-current="true"
       >
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#e83e8c" />
-        <text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text>
-      </svg>
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@username</strong>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
-        ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
-        justo sit amet risus.
-      </p>
-    </div>
-    <div class="media text-muted pt-3">
-      <svg
-        class="bd-placeholder-img mr-2 rounded"
-        width="32"
-        height="32"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-        aria-label="Placeholder: 32x32"
-      >
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#6f42c1" />
-        <text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text>
-      </svg>
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@username</strong>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
-        ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
-        justo sit amet risus.
-      </p>
-    </div>
-    <!-- <small class="d-block text-right mt-3">
-      <a href="#">All updates</a>
-    </small> -->
-  </div>
+        <img
+          src="../../assets/cursor-icon.svg"
+          alt="twbs"
+          width="32"
+          height="32"
+          class="rounded-circle flex-shrink-0 bio-icon"
+        />
+        <div class="d-flex gap-2 w-100 justify-content-between">
+          <div>
+            <h6 class="mb-0">Street: {{ user.address.street }}</h6>
+            <p class="mb-0 opacity-75">
+              Suite: {{ user.address.suite }}<br />
+              Zipcode:
+              {{ user.address.zipcode }}
+            </p>
+          </div>
 
-  <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-    <div class="media text-muted pt-3">
-      <svg
-        class="bd-placeholder-img mr-2 rounded"
-        width="32"
-        height="32"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-        aria-label="Placeholder: 32x32"
+          <!-- <small class="opacity-50 text-nowrap">3d</small> -->
+        </div>
+      </a>
+      <h6 class="border-bottom border-gray pb-2 mb-0 bio-text">
+        Work experience
+      </h6>
+      <a
+        href="#"
+        class="list-group-item list-group-item-action d-flex gap-3 py-3"
+        aria-current="true"
       >
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#007bff" />
-        <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-      </svg>
-      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <span class="d-block">@username</span>
-      </div>
-    </div>
-    <div class="media text-muted pt-3">
-      <svg
-        class="bd-placeholder-img mr-2 rounded"
-        width="32"
-        height="32"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-        aria-label="Placeholder: 32x32"
-      >
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#007bff" />
-        <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-      </svg>
-      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <span class="d-block">@username</span>
-      </div>
-    </div>
-    <div class="media text-muted pt-3">
-      <svg
-        class="bd-placeholder-img mr-2 rounded"
-        width="32"
-        height="32"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-        aria-label="Placeholder: 32x32"
-      >
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#007bff" />
-        <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-      </svg>
-      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <span class="d-block">@username</span>
-      </div>
+        <img
+          src="../../assets/building-icon.svg"
+          alt="twbs"
+          width="32"
+          height="32"
+          class="rounded-circle flex-shrink-0"
+        />
+        <div class="d-flex gap-2 w-100 justify-content-between">
+          <div>
+            <h6 class="mb-0">Company: {{ user.company.name }}</h6>
+            <p class="mb-0 opacity-75">
+              Position: {{ user.company.bs }}
+              <br />
+              Catch phrase: {{ user.company.catchPhrase }}
+            </p>
+          </div>
+          <!-- <small class="opacity-50 text-nowrap">now</small> -->
+        </div>
+      </a>
     </div>
   </div>
 </main>

@@ -12,7 +12,11 @@
           <p class="card-text">
             {{ user.company.catchPhrase }}
           </p>
-          <a routerLink="/users" class="btn btn-primary btn-card">Check bio</a>
+          <a
+            [routerLink]="['/users', user.name, user.id]"
+            class="btn btn-primary btn-card"
+            >Check bio</a
+          >
         </div>
       </div>
     </div>

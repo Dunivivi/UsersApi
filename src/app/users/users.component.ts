@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from '../interfaces/user';
 import { ApiService } from '../services/api.service';
 import { map } from 'rxjs/operators';
 import { Faces } from '../services/face';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-users',
@@ -13,22 +14,25 @@ export class UsersComponent implements OnInit {
   users: IUser | any;
   face: { id: number; url: string }[] | undefined;
 
-  constructor(private apiService: ApiService, private faces: Faces) {}
+  constructor(
+    private apiService: ApiService,
+    private faces: Faces,
+    private selectedUser: UserComponent
+  ) {}
 
   ngOnInit() {
-    this.showData();
+    this.users = this.apiService.getUsers();
+    // this.showData();
     this.face = this.faces.getImg();
   }
 
-  showData() {
-    this.apiService
-      .getData()
-      .pipe(map((response: any) => response))
-      .subscribe((data) => {
-        this.users = data;
-        console.log(this.users);
-      });
-  }
-
-  copyData() {}
+  // showData() {
+  //   this.apiService
+  //     .getData()
+  //     .pipe(map((response: any) => response))
+  //     .subscribe((data) => {
+  //       this.users = data;
+  //       console.log(this.users);
+  //     });
+  // }
 }

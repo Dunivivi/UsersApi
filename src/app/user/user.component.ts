@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { IUser } from '../interfaces/user';
 import { ApiService } from '../services/api.service';
+import { Faces } from '../services/face';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +10,22 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  constructor() {}
+  user: IUser | any;
+  portret: Faces | any;
 
-  ngOnInit(): void {}
+  constructor(
+    private route: ActivatedRoute,
+    private users: ApiService,
+    private face: Faces
+  ) {}
+
+  ngOnInit() {
+    //from string to number
+    const id = +this.route.snapshot.params['id'];
+
+    this.route.params.subscribe((params: Params) => {
+      this.user = this.users.findUser(+params['id']);
+      this.portret = this.face.getImgId(+params['id']);
+    });
+  }
 }

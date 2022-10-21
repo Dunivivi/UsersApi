@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-3" *ngFor="let user of users; let i = index">
+      <div class="card" style="width: 18rem; margin-top: 20px; height: 30rem">
+        <img
+          class="card-img-top card-img"
+          src="{{ face[i].url }}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <p class="card-text">
+            {{ user.company.catchPhrase }}
+          </p>
+          <a routerLink="/users" class="btn btn-primary btn-card">Check bio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

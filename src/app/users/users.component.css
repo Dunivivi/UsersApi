@@ -1,0 +1,18 @@
+.card-img {
+  height: 300px;
+  margin: auto;
+  width: 285px;
+}
+.card {
+  cursor: pointer;
+}
+
+.btn-card {
+  margin: 0;
+  position: absolute;
+  justify-content: center;
+  top: 90%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

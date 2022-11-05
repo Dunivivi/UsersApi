@@ -5,6 +5,7 @@ import { IUser } from '../interfaces/user';
 import { ApiService } from '../services/api.service';
 import { Faces } from '../services/face';
 import { UserComponent } from '../user/user.component';
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-users',
@@ -36,11 +37,13 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.users = users;
       }
     );
-    this.users = this.apiService.getUsers();
-
-    this.totalItems = Object.keys(this.users).length;
-    this.getData();
+    //console.log(this.users)
+    //this.showData();
+    //console.log(this.users)
+    //this.totalItems = Object.keys(this.users).length;
+    //this.getData();
     // this.showData();
+    this.loadPage(1);
     this.face = this.faces.getImg();
     console.log(this.totalItems);
     // localStorage.setItem('usersData', this.users);
@@ -52,6 +55,24 @@ export class UsersComponent implements OnInit, OnDestroy {
       (this.page - 1) * this.itemsPerPage,
       (this.page - 1) * this.itemsPerPage + this.itemsPerPage
     );
+  }
+  loadPage(page?: number): void{
+    const pageToLoad: number = page ?? this.page ?? 1;
+    this.page = pageToLoad;
+    this.page = page;
+    this.showData();
+  }
+  showData() {
+    this.apiService.getData()
+      .pipe(map((response: any) => response))
+      .subscribe((data) => {
+        this.users = data;
+        this.totalItems = this.users.length;
+        this.paginateData = this.users.slice(
+          (this.page - 1) * this.itemsPerPage,
+          (this.page - 1) * this.itemsPerPage + this.itemsPerPage);
+        //console.log('1' + this.users);
+      });
   }
 
   ngOnDestroy(): void {

@@ -12,7 +12,5 @@ export class AppComponent implements OnInit {
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit() {
-    this.apiService.showData();
-  }
+  ngOnInit() {}
 }

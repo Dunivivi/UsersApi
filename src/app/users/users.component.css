@@ -16,3 +16,12 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: -7px 4px 28px -3px #3bd9d9;
+}
+
+.pagination {
+  margin-top: 20px;
+}

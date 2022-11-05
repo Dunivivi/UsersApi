@@ -11,12 +11,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Faces } from './services/face';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { Authentification } from './auth/authentification.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'users', component: UsersComponent },
   { path: 'users/:name/:id', component: UserComponent },
+  { path: 'auth', component: Authentification },
 
   // { path: 'users/:id/:name', component: UserComponent },
 ];
@@ -29,7 +33,13 @@ const appRoutes: Routes = [
     NavbarComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
+    NgbModule,
+  ],
   providers: [ApiService, UserComponent, Faces],
   bootstrap: [AppComponent],
 })

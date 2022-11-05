@@ -4,6 +4,25 @@
   }
 }
 
+@keyframes pan {
+  100% {
+    background-position: 15% 50%;
+  }
+}
+
+.form-div {
+  height: 650px;
+  display: grid;
+  background-image: url(../../assets/low-poly-grid-haikei.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: pan 6s infinite alternate linear;
+}
+.form,
+.form-text {
+  color: aliceblue;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;

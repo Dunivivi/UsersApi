@@ -22,8 +22,8 @@ export class ApiService {
   }
 
   getUsers() {
-    console.log(this.users);
     this.showData();
+    //console.log('2'+this.users);
     return this.users.slice();
   }
 
@@ -39,7 +39,7 @@ export class ApiService {
       .pipe(map((response: any) => response))
       .subscribe((data) => {
         this.users = data;
-        // console.log(this.users);
+        //console.log('1' + this.users);
       });
   }
 }

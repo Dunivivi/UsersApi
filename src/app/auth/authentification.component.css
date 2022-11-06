@@ -10,6 +10,10 @@
   }
 }
 
+body {
+  height: 100%;
+}
+
 .form-div {
   height: 650px;
   display: grid;
@@ -51,4 +55,11 @@
 
 input.ng-invalid.ng-touched {
   border: 2px solid rgb(189, 47, 47);
+}
+label {
+  color: white;
+}
+
+.form-button {
+  margin-top: 0.5rem;
 }

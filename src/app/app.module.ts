@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { Authentification } from './auth/authentification.component';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
+import { AuthentificationService } from './auth/authentification.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule,
   ],
-  providers: [ApiService, UserComponent, Faces],
+  providers: [ApiService, UserComponent, Faces, AuthentificationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,10 +1,14 @@
+<div class="loading" *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>
 <div class="container">
   <div class="row">
-    <div
-      class="col-md-3 col-sm-3"
-      *ngFor="let user of paginateData; let i = index"
-    >
-      <div class="card" style="width: 18rem; margin-top: 20px; height: 30rem">
+    <div class="col-md-3 col-sm-3" *ngFor="let user of users; let i = index">
+      <div
+        class="card"
+        style="width: 18rem; margin-top: 20px; height: 30rem"
+        *ngIf="!isLoading"
+      >
         <img
           class="card-img-top card-img"
           src="{{ face[i].url }}"
@@ -24,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center pagination">
+  <div class="d-flex justify-content-center pagination" *ngIf="!isLoading">
     <ngb-pagination
       [collectionSize]="totalItems"
       [(page)]="page"

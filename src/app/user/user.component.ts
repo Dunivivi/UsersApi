@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IUser } from '../interfaces/user';
-import { ApiService } from '../services/api.service';
-import { Faces } from '../services/face';
+import { IUser } from '../shared/interfaces/user';
+import { ApiService } from '../shared/services/api.service';
+import { Faces } from '../shared/services/face';
 
 @Component({
   selector: 'app-user',
@@ -12,6 +12,8 @@ import { Faces } from '../services/face';
 export class UserComponent implements OnInit {
   user: IUser | any;
   portret: Faces | any;
+  id: number;
+  isLoading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +22,22 @@ export class UserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isLoading = true;
     //from string to number
     const id = +this.route.snapshot.params['id'];
 
     this.route.params.subscribe((params: Params) => {
-      this.user = this.users.findUser(+params['id']);
+      this.id = +params['id'];
       this.portret = this.face.getImgId(+params['id']);
+    });
+    this.getUser(id);
+  }
+
+  getUser(id: number) {
+    this.users.getUser(id).subscribe((response) => {
+      this.user = response.body;
+      console.log(this.user);
+      this.isLoading = false;
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -7,4 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Authentification implements OnInit {
   ngOnInit() {}
+
+  onSubmit(authForm: NgForm) {
+    console.log(authForm);
+  }
 }

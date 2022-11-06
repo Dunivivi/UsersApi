@@ -43,3 +43,12 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.help-block {
+  color: aliceblue;
+  margin-bottom: 20px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid rgb(189, 47, 47);
+}

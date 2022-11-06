@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IUser } from '../interfaces/user';
+import { IUser } from '../shared/interfaces/user';
 
 @Component({
   selector: 'app-navbar',

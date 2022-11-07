@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { AuthentificationService } from '../auth/authentification.service';
 import { IUser } from '../shared/interfaces/user';
 
 @Component({
@@ -7,10 +9,28 @@ import { IUser } from '../shared/interfaces/user';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   user: IUser | any;
+  // isAuthentificated = false;
+  private userSub: Subscription;
+  isAuthentificated = false;
+  constructor(
+    private route: ActivatedRoute,
+    private authentificationService: AuthentificationService
+  ) {}
 
-  constructor(private route: ActivatedRoute) {}
+  ngOnInit() {
+    this.userSub = this.authentificationService.user.subscribe((user) => {
+      this.isAuthentificated = !user ? false : true;
+      console.log(this.isAuthentificated);
+    });
+  }
 
-  ngOnInit(): void {}
+  onLogout() {
+    this.authentificationService.logout();
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
+  }
 }

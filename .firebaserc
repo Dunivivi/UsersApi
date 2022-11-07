@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "users-api-16dc6"
+  },
+  "targets": {
+    "users-api-16dc6": {
+      "hosting": {
+        "users-api": [
+          "users-api-16dc6"
+        ]
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { AuthentificationService } from './auth/authentification.service';
 import { ApiService } from './shared/services/api.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { ApiService } from './shared/services/api.service';
 export class AppComponent implements OnInit {
   title = 'users-api';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private authService: AuthentificationService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.authService.isLoggedIn();
+  }
 }

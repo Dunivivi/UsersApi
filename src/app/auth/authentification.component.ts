@@ -53,7 +53,7 @@ export class Authentification implements OnInit {
     }
 
     authForm.reset();
-    console.log(authForm);
+    // console.log(authForm);
   }
 
   onSwitchMode() {

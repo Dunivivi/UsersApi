@@ -28,6 +28,7 @@ export class AuthentificationService {
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
+        catchError(this.handleError),
         tap((res) => {
           this.handleAuthentification(res.email);
         })
@@ -41,32 +42,38 @@ export class AuthentificationService {
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
+        catchError(this.handleError),
         tap((res) => {
           this.handleAuthentification(res.email);
         })
       );
   }
 
-  signIn(email: string, password: string) {
-    this.angularFireAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((res) => {
-        console.log(res);
-        console.log('logged in');
-      })
-      .catch((error) => {
-        console.log('Error ocurred', error.message);
-      });
-  }
-
   private handleAuthentification(email: string) {
     const user = new User(email);
     this.user.next(user);
-    console.log(user);
-    console.log(this.user);
+    // console.log(user);
+    // console.log(this.user);
   }
-  check() {
-    console.log(this.user);
+
+  private handleError(errorResponse: HttpErrorResponse) {
+    let errorMessage = 'An error occured';
+
+    if (!errorResponse.error || !errorResponse.error.error) {
+      throwError(errorMessage);
+    }
+    switch (errorResponse.error.error.message) {
+      case 'EMAIL_EXISTS':
+        errorMessage = 'This email exists already';
+        break;
+      case 'EMAIL_NOT_FOUND':
+        errorMessage = 'This email does not exists';
+        break;
+      case 'INVALID_PASSWORD':
+        errorMessage = 'The password user is not correct';
+        break;
+    }
+    return throwError(errorMessage);
   }
 
   logout() {

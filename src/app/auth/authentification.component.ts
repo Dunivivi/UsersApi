@@ -16,7 +16,7 @@ export class Authentification implements OnInit {
 
   isLoading = false;
   isLoginMode = false;
-  isAuthentificated = false;
+  error: string = null;
   ngOnInit() {}
 
   onSubmit(authForm: NgForm) {
@@ -36,6 +36,7 @@ export class Authentification implements OnInit {
         },
         (error) => {
           console.log(error);
+          this.error = error;
           this.isLoading = false;
         }
       );
@@ -44,9 +45,12 @@ export class Authentification implements OnInit {
         (res) => {
           console.log(res);
           this.isLoading = false;
+
+          this.router.navigate(['/users']);
         },
         (error) => {
           console.log(error);
+          this.error = error;
           this.isLoading = false;
         }
       );

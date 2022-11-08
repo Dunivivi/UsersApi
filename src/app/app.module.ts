@@ -29,17 +29,7 @@ import {
 } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { UsersAddComponent } from './users/users-add/users-add.component';
-
-const appRoutes: Routes = [
-  { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/add', component: UsersAddComponent },
-  { path: 'users/:name/:id', component: UserComponent },
-  { path: 'auth', component: Authentification },
-
-  // { path: 'users/:id/:name', component: UserComponent },
-];
+import { AppRountingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +46,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    AppRountingModule,
     NgbModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -32,7 +32,7 @@ export class Authentification implements OnInit {
         (res) => {
           console.log(res);
           this.isLoading = false;
-          this.router.navigate(['/users']);
+          this.router.navigate(['']);
         },
         (error) => {
           console.log(error);
@@ -45,8 +45,7 @@ export class Authentification implements OnInit {
         (res) => {
           console.log(res);
           this.isLoading = false;
-
-          this.router.navigate(['/users']);
+          this.router.navigate(['']);
         },
         (error) => {
           console.log(error);

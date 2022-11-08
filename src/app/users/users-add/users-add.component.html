@@ -1,0 +1,212 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <div class="card mb-4">
+        <div class="card-header py-3">
+          <h5 class="mb-0">User details</h5>
+        </div>
+        <div class="card-body">
+          <form
+            class="row g-3"
+            (ngSubmit)="onSubmit(addUser)"
+            #addUser="ngForm"
+          >
+            <div class="row user-data" id="user-data" ngModelGroup="userData">
+              <div class="col-md-4">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Vasiliy"
+                  ngModel
+                  name="name"
+                  #name="ngModel"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="lastName" class="form-label">Last name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  placeholder="Ignatov"
+                  ngModel
+                  name="lastName"
+                  #lastName="ngModel"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Mishka"
+                  ngModel
+                  name="username"
+                  #username="ngModel"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Email </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="vasiliyignatov@mail.com"
+                  ngModel
+                  name="email"
+                  email
+                  #email="ngModel"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="phoneNumber" class="form-label"
+                  >Phone number
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phoneNumber"
+                  placeholder="37360606060"
+                  ngModel
+                  name="phoneNumber"
+                  #phoneNumber="ngModel"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="webSite" class="form-label">Web site </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="webSite"
+                  placeholder="esempla.com"
+                  ngModel
+                  name="webSite"
+                  #webSite="ngModel"
+                />
+              </div>
+            </div>
+            <div class="card-header py-3 subcard">
+              <h5 class="mb-0">Address</h5>
+            </div>
+            <div
+              class="row user-data"
+              id="user-address"
+              ngModelGroup="userAddress"
+            >
+              <div class="col-md-3">
+                <label for="street" class="form-label">Street</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street"
+                  placeholder="Ion Creanga"
+                  ngModel
+                  name="street"
+                  #street="ngModel"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="suite" class="form-label">Suite</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="suite"
+                  placeholder="Apt. 43543"
+                  ngModel
+                  name="suite"
+                  #suite="ngModel"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="Chisinau"
+                  ngModel
+                  name="city"
+                  #city="ngModel"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="zip" class="form-label">Zip</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="zip"
+                  placeholder="MD-3541"
+                  ngModel
+                  name="zip"
+                  #zip="ngModel"
+                />
+              </div>
+            </div>
+            <div class="card-header py-3 subcard">
+              <h5 class="mb-0">Company</h5>
+            </div>
+            <div
+              class="row user-data"
+              id="user-company"
+              ngModelGroup="userCompany"
+            >
+              <div class="col-md-3">
+                <label for="companyName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="companyName"
+                  placeholder="Esempla Systems"
+                  ngModel
+                  name="companyName"
+                  #companyName="ngModel"
+                />
+              </div>
+              <div class="col-md-2">
+                <label for="bs" class="form-label">bs</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bs"
+                  placeholder="harness e-market"
+                  ngModel
+                  name="bs"
+                  #bs="ngModel"
+                />
+              </div>
+              <div class="col-md-7">
+                <label for="catchPhrase" class="form-label">Catch phrase</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="catchPhrase"
+                  placeholder="Multi-layered client-server neural-net"
+                  ngModel
+                  name="catchPhrase"
+                  #catchPhrase="ngModel"
+                />
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-6">
+              <button class="btn btn-primary form-btn" type="submit">
+                Submit
+              </button>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+              <button
+                class="btn btn-danger form-btn-2"
+                type="button"
+                (click)="onCancel(addUser)"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

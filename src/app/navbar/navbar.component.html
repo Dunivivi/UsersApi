@@ -32,8 +32,22 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/users" routerLinkActive="active"
+        <a
+          class="nav-link"
+          routerLink="/users"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Users</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/users/add"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          *ngIf="isAuthentificated"
+          >Add user</a
         >
       </li>
     </ul>

@@ -23,13 +23,18 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import {
+  AngularFireStorage,
+  AngularFireStorageModule,
+} from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { UsersAddComponent } from './users/users-add/users-add.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'users', component: UsersComponent },
+  { path: 'users/add', component: UsersAddComponent },
   { path: 'users/:name/:id', component: UserComponent },
   { path: 'auth', component: Authentification },
 
@@ -45,6 +50,7 @@ const appRoutes: Routes = [
     HomeComponent,
     Authentification,
     LoadingSpinner,
+    UsersAddComponent,
   ],
   imports: [
     BrowserModule,

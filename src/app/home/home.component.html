@@ -5,11 +5,20 @@
     routerLink="/users"
     type="button"
   >
-    Load
+    Load users
   </button>
   <button
     class="btn btn-lg btn-primary btn-block"
+    *ngIf="!isAuthentificated"
     routerLink="/auth"
+    type="button"
+  >
+    Login
+  </button>
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    *ngIf="isAuthentificated"
+    routerLink="/users/add"
     type="button"
   >
     Add user

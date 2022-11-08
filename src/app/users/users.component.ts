@@ -53,7 +53,7 @@ export class UsersComponent implements OnInit {
   showData() {
     this.apiService.getData(this.page, this.itemsPerPage).subscribe((data) => {
       this.users = data.body;
-      // console.log(this.users);
+      console.log(this.users);
       this.totalItems = Number(data.headers.get('X-Total-Count'));
       this.isLoading = false;
     });

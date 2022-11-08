@@ -1,0 +1,135 @@
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+@keyframes pan {
+  100% {
+    background-position: 15% 50%;
+  }
+}
+
+body {
+  height: 100%;
+}
+
+.form-div {
+  height: 650px;
+  width: 100%;
+  display: grid;
+  background-image: url(../../../assets/blob-scene-haikei.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: pan 6s infinite alternate linear;
+}
+
+.container {
+  margin-top: 3rem;
+}
+
+.user-data label {
+  margin-top: 10px;
+}
+
+.subcard {
+  background-color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.form-btn,
+.form-btn-2 {
+  width: 200px;
+  padding-top: 0.5rem;
+}
+.form-btn:first-child {
+  margin-left: 20rem;
+}
+/* .form-border {
+  border: 1px solid black;
+  border-radius: 1rem;
+} */
+
+@media (max-width: 1200px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 150px;
+  }
+  .form-btn:first-child {
+    margin-left: 15rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 150px;
+  }
+  .form-btn:first-child {
+    margin-left: 10rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 100px;
+  }
+  .form-btn:first-child {
+    margin-left: 8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 100px;
+  }
+  .form-btn:first-child {
+    margin-left: 6rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 90px;
+  }
+  .form-btn:first-child {
+    margin-left: 6rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 90px;
+  }
+  .form-btn:first-child {
+    margin-left: 5.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 80px;
+  }
+  .form-btn:first-child {
+    margin-left: 4rem;
+  }
+}
+
+@media (max-width: 322px) {
+  .form-btn,
+  .form-btn-2 {
+    width: 80px;
+    font-size: 0.8rem;
+  }
+  .form-btn:first-child {
+    margin-left: 2.5rem;
+  }
+}

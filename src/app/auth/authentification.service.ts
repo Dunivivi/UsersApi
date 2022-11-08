@@ -1,6 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { stringLength } from '@firebase/util';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
@@ -18,6 +23,7 @@ export class AuthentificationService {
   constructor(
     private http: HttpClient,
     public angularFireAuth: AngularFireAuth,
+    public angluarFirestore: AngularFirestore,
     private router: Router
   ) {}
 
@@ -49,9 +55,21 @@ export class AuthentificationService {
       );
   }
 
+  autoLogin() {
+    const userData: {
+      email: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(userData.email);
+    this.user.next(loadedUser);
+  }
+
   private handleAuthentification(email: string) {
     const user = new User(email);
     this.user.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
     // console.log(user);
     // console.log(this.user);
   }
@@ -78,6 +96,7 @@ export class AuthentificationService {
 
   logout() {
     this.user.next(null);
+    localStorage.removeItem('userData');
     this.router.navigate(['']);
   }
 }

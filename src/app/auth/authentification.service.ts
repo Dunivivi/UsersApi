@@ -19,6 +19,7 @@ export interface AuthentificationData {
 @Injectable({ providedIn: 'root' })
 export class AuthentificationService {
   user = new BehaviorSubject<User>(null);
+  dockerUrl = 'https://localhost:8080';
 
   constructor(
     private http: HttpClient,
@@ -55,6 +56,13 @@ export class AuthentificationService {
       );
   }
 
+  loginDocker(body) {
+    return this.http
+      .post(this.dockerUrl + '/auth/login', body)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
   autoLogin() {
     const userData: {
       email: string;

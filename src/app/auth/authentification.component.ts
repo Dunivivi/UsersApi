@@ -17,7 +17,10 @@ export class Authentification implements OnInit {
   isLoading = false;
   isLoginMode = false;
   error: string = null;
-  ngOnInit() {}
+  ngOnInit() {
+    const body = { password: 'admin', username: 'admin' };
+    this.authService.loginDocker(body);
+  }
 
   onSubmit(authForm: NgForm) {
     this.isLoading = true;

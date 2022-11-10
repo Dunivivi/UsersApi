@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from '../shared/interfaces/user';
 import { ApiService } from '../shared/services/api.service';
+import { DataStorageService } from '../shared/services/datastorage.service';
 import { Faces } from '../shared/services/face';
 import { UserComponent } from '../user/user.component';
 
@@ -29,7 +30,8 @@ export class UsersComponent implements OnInit {
     private faces: Faces,
     private selectedUser: UserComponent,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dataStorage: DataStorageService
   ) {}
 
   ngOnInit() {
@@ -56,6 +58,7 @@ export class UsersComponent implements OnInit {
       console.log(this.users);
       this.totalItems = Number(data.headers.get('X-Total-Count'));
       this.isLoading = false;
+      this.dataStorage.storeUsers(this.users);
     });
   }
 }

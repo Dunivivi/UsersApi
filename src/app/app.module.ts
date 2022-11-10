@@ -30,6 +30,7 @@ import {
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { UsersAddComponent } from './users/users-add/users-add.component';
 import { AppRountingModule } from './app-routing.module';
+import { DataStorageService } from './shared/services/datastorage.service';
 
 @NgModule({
   declarations: [
@@ -52,12 +53,22 @@ import { AppRountingModule } from './app-routing.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    HttpClientModule,
+
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [ApiService, UserComponent, Faces, AuthentificationService],
+  providers: [
+    ApiService,
+    UserComponent,
+    Faces,
+    AuthentificationService,
+    DataStorageService,
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}

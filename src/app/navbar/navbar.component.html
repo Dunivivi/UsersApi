@@ -40,17 +40,29 @@
           >Users</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isAuthentificated">
         <a
           class="nav-link"
           routerLink="/users/add"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          *ngIf="isAuthentificated"
           >Add user</a
         >
       </li>
     </ul>
+
+    <div class="col-md-6 search-bar">
+      <div class="form">
+        <!-- <i class="fa fa-search"></i> -->
+        <input
+          type="text"
+          class="form-control form-input"
+          placeholder="Search anything..."
+        />
+        <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
+      </div>
+    </div>
+
     <ul class="navbar-nav ms-auto flex-nowrap">
       <li class="nav-item">
         <a

@@ -1,3 +1,18 @@
 .navbar-brand {
   margin-left: 20px;
 }
+
+.search-bar {
+  margin: auto;
+}
+
+.form-input {
+  height: 45px;
+  text-indent: 33px;
+  border-radius: 10px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}

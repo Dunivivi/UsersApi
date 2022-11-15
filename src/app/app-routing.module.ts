@@ -11,7 +11,12 @@ import { UsersComponent } from './users/users.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'users', component: UsersComponent },
+  {
+    path: 'users',
+    component: UsersComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
   { path: 'users/add', component: UsersAddComponent, canActivate: [AuthGuard] },
   { path: 'users/:name/:id', component: UserComponent },
   { path: 'auth', component: Authentification },

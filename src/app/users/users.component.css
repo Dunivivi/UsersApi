@@ -3,9 +3,6 @@
   margin: auto;
   width: 285px;
 }
-.card {
-  cursor: pointer;
-}
 
 .btn-card {
   margin: 0;
@@ -32,4 +29,52 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.admin-features {
+  cursor: pointer;
+  top: 90%;
+  /* opacity: 20; */
+  position: absolute;
+  display: flex;
+  color: black;
+  /* top: 1.5rem;
+  left: 94%; */
+  transition: 0.5s;
+  transition-delay: 0.25s;
+}
+
+/* .admin-features:hover {
+} */
+
+.bi {
+  display: flex;
+  font-size: 2rem;
+}
+
+.bi:hover {
+  transform: scale(1.3);
+  transition-delay: 0s;
+}
+.icon-feature {
+  text-decoration: none;
+  color: black;
+  padding-left: 2rem;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  width: 80px;
+  color: white;
+  font-size: 12px;
+  background-color: #192733;
+  border-radius: 10px;
+  padding: 10px 12px 10px 12px;
+}
+
+.icon-feature:hover .tooltip-text {
+  visibility: visible;
 }

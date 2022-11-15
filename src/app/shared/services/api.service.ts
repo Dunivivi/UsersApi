@@ -6,7 +6,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces/user';
+import { IUser, User } from '../interfaces/user';
 import { map } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 
@@ -19,10 +19,98 @@ const httpOptions = {
 @Injectable()
 export class ApiService {
   private usersUrl = 'https://jsonplaceholder.typicode.com';
+  private dockerUrl = 'http://localhost:8080';
   users: IUser | any;
   usersChanged = new Subject<IUser[]>();
 
   constructor(private http: HttpClient) {}
+
+  populateDbDocker() {
+    const userData: {
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${userData.token}`,
+    });
+    console.log(userData.token);
+    return this.http.get(`${this.dockerUrl}/api/faker/populate`, {
+      headers: headers,
+    });
+  }
+
+  getUsersDocker(): Observable<HttpResponse<IUser>> {
+    const userData: {
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${userData.token}`,
+    });
+
+    return this.http.get<IUser>(`${this.dockerUrl}/api/users`, {
+      observe: 'response',
+      headers: headers,
+    });
+  }
+
+  getUserById(id: number): Observable<HttpResponse<IUser>> {
+    const userData: {
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${userData.token}`,
+    });
+    return this.http.get<IUser>(`${this.dockerUrl}/api/users/${id}`, {
+      observe: 'response',
+      headers: headers,
+    });
+  }
+
+  updateUser() {}
+
+  createUser(user: User): Observable<any> {
+    const userData: {
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${userData.token}`,
+    });
+
+    return this.http.post(`${this.dockerUrl}/api/users`, user, {
+      headers: headers,
+    });
+  }
+
+  deleteUserById(id: number) {
+    const userData: {
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${userData.token}`,
+    });
+
+    return this.http.delete<IUser>(`${this.dockerUrl}/api/users/${id}`, {
+      observe: 'body',
+      headers: headers,
+    });
+  }
+
+  // addUserDocker(user: IUser) {
+  //   const userData: {
+  //     token: string;
+  //   } = JSON.parse(localStorage.getItem('userData'));
+  //   let headers = new HttpHeaders({
+  //     Authorization: `Bearer ${userData.token}`,
+  //   });
+  //   console.log(user);
+  //   return this.http.post<IUser>(`${this.dockerUrl}/api/users`, user, {
+  //     headers: headers,
+  //   });
+  // }
+
+  //==============================Firebase=========================
 
   getData(page: number, limit: number): Observable<HttpResponse<IUser>> {
     let searchParams = new HttpParams();
@@ -36,25 +124,25 @@ export class ApiService {
     });
   }
 
+  getUsers() {
+    // this.showData();
+    //console.log('2'+this.users);
+    return this.users.slice();
+  }
+
   getUser(id: number): Observable<HttpResponse<IUser>> {
     return this.http.get<IUser>(this.usersUrl + '/users/' + id, {
       observe: 'response',
     });
   }
 
-  setData(users: IUser[]) {
-    this.users = users;
-    this.usersChanged.next(this.users.slice());
-  }
-
   postData(users: IUser): Observable<IUser> {
     return this.http.put<IUser>(this.usersUrl + '/users', users, httpOptions);
   }
 
-  getUsers() {
-    // this.showData();
-    //console.log('2'+this.users);
-    return this.users.slice();
+  setData(users: IUser[]) {
+    this.users = users;
+    this.usersChanged.next(this.users.slice());
   }
 
   findUser(id: number) {

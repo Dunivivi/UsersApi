@@ -31,6 +31,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { UsersAddComponent } from './users/users-add/users-add.component';
 import { AppRountingModule } from './app-routing.module';
 import { DataStorageService } from './shared/services/datastorage.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NavbarService } from './navbar/navbar.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { DataStorageService } from './shared/services/datastorage.service';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
 
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -66,6 +69,7 @@ import { DataStorageService } from './shared/services/datastorage.service';
     Faces,
     AuthentificationService,
     DataStorageService,
+    NavbarService,
   ],
   bootstrap: [AppComponent],
 })

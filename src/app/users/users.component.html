@@ -5,7 +5,7 @@
   <div class="row">
     <div
       class="col-xl-3 col-md-4 col-sm-6 col-8"
-      *ngFor="let user of users; let i = index"
+      *ngFor="let user of users | filter: filterTerm; let i = index"
     >
       <div
         class="card"
@@ -22,11 +22,28 @@
           <p class="card-text">
             {{ user.company.catchPhrase }}
           </p>
-          <a
+          <div class="admin-features">
+            <a
+              class="icon-feature"
+              [routerLink]="['/users', user.name, user.id]"
+            >
+              <i class="bi bi-eye"></i>
+              <span class="tooltip-text">View</span></a
+            >
+            <a class="icon-feature"
+              ><i class="bi bi-database-gear" (click)="onUpdate(user.id)"></i>
+              <span class="tooltip-text">Update</span></a
+            >
+            <a class="icon-feature"
+              ><i class="bi bi-trash" (click)="onDelete(user.id)"></i>
+              <span class="tooltip-text">Delete</span></a
+            >
+          </div>
+          <!-- <a
             [routerLink]="['/users', user.name, user.id]"
             class="btn btn-primary btn-card"
             >Check bio</a
-          >
+          > -->
         </div>
       </div>
     </div>

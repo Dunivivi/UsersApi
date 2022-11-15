@@ -7,14 +7,14 @@ import { ApiService } from './api.service';
 export class DataStorageService {
   constructor(private http: HttpClient, private apiService: ApiService) {}
 
-  storeUsers(users) {
-    return this.http
-      .put(
-        'https://users-api-16dc6-default-rtdb.firebaseio.com/users.json',
-        users
-      )
-      .subscribe((response) => {
-        console.log(response);
-      });
-  }
+  // storeUsers(users) {
+  //   return this.http
+  //     .put(
+  //       'https://users-api-16dc6-default-rtdb.firebaseio.com/users.json',
+  //       users
+  //     )
+  //     .subscribe((response) => {
+  //       console.log(response);
+  //     });
+  // }
 }

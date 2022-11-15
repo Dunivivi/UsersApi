@@ -15,23 +15,62 @@ export class Authentification implements OnInit {
   ) {}
 
   isLoading = false;
-  isLoginMode = false;
+  isLoginMode = true;
   error: string = null;
   ngOnInit() {
-    const body = { password: 'admin', username: 'admin' };
-    this.authService.loginDocker(body);
+    // const headers = { Authorization: this.responseBody };
+    // this.authService.populateDbDocker(headers);
   }
 
+  // onSubmit(authForm: NgForm) {
+  //   this.isLoading = true;
+  //   if (!authForm.valid) {
+  //     return;
+  //   }
+  //   const email = authForm.value.email;
+  //   const password = authForm.value.password;
+
+  //   if (this.isLoginMode) {
+  //     this.authService.login(email, password).subscribe(
+  //       (res) => {
+  //         console.log(res);
+  //         this.isLoading = false;
+  //         this.router.navigate(['']);
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //         this.error = error;
+  //         this.isLoading = false;
+  //       }
+  //     );
+  //   } else {
+  //     this.authService.signUp(email, password).subscribe(
+  //       (res) => {
+  //         console.log(res);
+  //         this.isLoading = false;
+  //         this.router.navigate(['']);
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //         this.error = error;
+  //         this.isLoading = false;
+  //       }
+  //     );
+  //   }
+
+  //   authForm.reset();
+  //   // console.log(authForm);
+  // }
+
   onSubmit(authForm: NgForm) {
+    const username = authForm.value.email;
+    const password = authForm.value.password;
     this.isLoading = true;
     if (!authForm.valid) {
       return;
     }
-    const email = authForm.value.email;
-    const password = authForm.value.password;
-
     if (this.isLoginMode) {
-      this.authService.login(email, password).subscribe(
+      this.authService.loginDocker(username, password).subscribe(
         (res) => {
           console.log(res);
           this.isLoading = false;
@@ -44,22 +83,12 @@ export class Authentification implements OnInit {
         }
       );
     } else {
-      this.authService.signUp(email, password).subscribe(
-        (res) => {
-          console.log(res);
-          this.isLoading = false;
-          this.router.navigate(['']);
-        },
-        (error) => {
-          console.log(error);
-          this.error = error;
-          this.isLoading = false;
-        }
-      );
+      this.isLoading = false;
+      return;
     }
 
-    authForm.reset();
-    // console.log(authForm);
+    // this.authService.loginDocker(username, password);
+    this.isLoading = false;
   }
 
   onSwitchMode() {

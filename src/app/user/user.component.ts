@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private users: ApiService,
+    private apiService: ApiService,
     private face: Faces
   ) {}
 
@@ -25,7 +25,6 @@ export class UserComponent implements OnInit {
     this.isLoading = true;
     //from string to number
     const id = +this.route.snapshot.params['id'];
-
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.portret = this.face.getImgId(+params['id']);
@@ -33,10 +32,18 @@ export class UserComponent implements OnInit {
     this.getUser(id);
   }
 
+  // getUser(id: number) {
+  //   this.users.getUser(id).subscribe((response) => {
+  //     this.user = response.body;
+  //     console.log(this.user);
+  //     this.isLoading = false;
+  //   });
+  // }
+
   getUser(id: number) {
-    this.users.getUser(id).subscribe((response) => {
+    this.apiService.getUserById(id).subscribe((response) => {
       this.user = response.body;
-      console.log(this.user);
+      console.log(response.body);
       this.isLoading = false;
     });
   }

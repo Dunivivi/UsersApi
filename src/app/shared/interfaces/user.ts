@@ -12,3 +12,16 @@ export interface IUser {
   address: IAddress;
   company: ICompany;
 }
+
+export class User {
+  constructor(
+    public id?: number,
+    public name?: string,
+    public username?: string,
+    public website?: string,
+    public phone?: string,
+    public email?: string,
+    public address?: IAddress,
+    public company?: ICompany
+  ) {}
+}

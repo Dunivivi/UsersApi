@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -8,18 +12,26 @@ import {
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { stringLength } from '@firebase/util';
-import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  tap,
+  throwError,
+} from 'rxjs';
 import { IUser } from '../shared/interfaces/user';
 import { User } from './user.model';
 
 export interface AuthentificationData {
   email: string;
+  token: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class AuthentificationService {
   user = new BehaviorSubject<User>(null);
-  dockerUrl = 'https://localhost:8080';
+  dockerUrl = 'http://localhost:8080';
 
   constructor(
     private http: HttpClient,
@@ -56,26 +68,46 @@ export class AuthentificationService {
       );
   }
 
-  loginDocker(body) {
+  loginDocker(username: string, password: string) {
     return this.http
-      .post(this.dockerUrl + '/auth/login', body)
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .post<AuthentificationData>(this.dockerUrl + '/auth/login', {
+        username,
+        password,
+      })
+      .pipe(
+        catchError(this.handleError),
+        tap((res) => {
+          this.handleAuthentification(res.token);
+        })
+      );
   }
+
+  // .subscribe((response) => {
+  //   console.log(response);
+  // });
+
+  // getUsers(header) {
+  //   const headers = new HttpHeaders({ Authorization: `Bearer ${header}` });
+  //   return this.http
+  //     .get(this.dockerUrl + '/api/users', { headers })
+  //     .subscribe((response) => {
+  //       console.log(response);
+  //     });
+  // }
+
   autoLogin() {
     const userData: {
-      email: string;
+      token: string;
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
     }
-    const loadedUser = new User(userData.email);
+    const loadedUser = new User(userData.token);
     this.user.next(loadedUser);
   }
 
-  private handleAuthentification(email: string) {
-    const user = new User(email);
+  private handleAuthentification(token: string) {
+    const user = new User(token);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
     // console.log(user);

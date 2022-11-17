@@ -16,12 +16,15 @@
                 <label for="name" class="form-label">Name</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control is-invalid"
                   id="name"
                   placeholder="Vasiliy"
                   [(ngModel)]="name"
                   name="name"
+                  required
+                  #name1="ngModel"
                 />
+                <div class="invalid-feedback">Please provide a valid city.</div>
               </div>
               <div class="col-md-4">
                 <label for="lastName" class="form-label">Last name</label>
@@ -44,6 +47,7 @@
                   placeholder="Mishka"
                   [(ngModel)]="username"
                   name="username"
+                  required
                 />
               </div>
               <div class="col-md-4">
@@ -56,6 +60,7 @@
                   [(ngModel)]="email"
                   name="email"
                   email
+                  required
                 />
               </div>
               <div class="col-md-4">
@@ -69,6 +74,7 @@
                   placeholder="37360606060"
                   [(ngModel)]="phoneNumber"
                   name="phoneNumber"
+                  required
                 />
               </div>
               <div class="col-md-4">
@@ -80,6 +86,7 @@
                   placeholder="esempla.com"
                   [(ngModel)]="webSite"
                   name="webSite"
+                  required
                 />
               </div>
             </div>
@@ -100,6 +107,7 @@
                   placeholder="Ion Creanga"
                   [(ngModel)]="street"
                   name="street"
+                  required
                 />
               </div>
               <div class="col-md-3">
@@ -111,6 +119,7 @@
                   placeholder="Apt. 43543"
                   [(ngModel)]="suite"
                   name="suite"
+                  required
                 />
               </div>
               <div class="col-md-3">
@@ -122,6 +131,7 @@
                   placeholder="Chisinau"
                   [(ngModel)]="city"
                   name="city"
+                  required
                 />
               </div>
               <div class="col-md-3">
@@ -133,6 +143,7 @@
                   placeholder="MD-3541"
                   [(ngModel)]="zipcode"
                   name="zipcode"
+                  required
                 />
               </div>
               <div class="row user-data" id="user-company" ngModelGroup="geo">
@@ -145,6 +156,7 @@
                     placeholder="47.656"
                     [(ngModel)]="lat"
                     name="lat"
+                    required
                   />
                 </div>
                 <div class="col-md-3">
@@ -156,11 +168,11 @@
                     placeholder="-34.2343"
                     [(ngModel)]="lng"
                     name="lng"
+                    required
                   />
                 </div>
               </div>
             </div>
-
             <div class="card-header py-3 subcard">
               <h5 class="mb-0">Company</h5>
             </div>
@@ -178,6 +190,7 @@
                   placeholder="Esempla Systems"
                   [(ngModel)]="companyName"
                   name="name"
+                  required
                 />
               </div>
               <div class="col-md-2">
@@ -189,6 +202,7 @@
                   placeholder="harness e-market"
                   [(ngModel)]="bs"
                   name="bs"
+                  required
                 />
               </div>
               <div class="col-md-7">
@@ -200,6 +214,7 @@
                   placeholder="Multi-layered client-server neural-net"
                   [(ngModel)]="catchPhrase"
                   name="catchPhrase"
+                  required
                 />
               </div>
             </div>

@@ -98,7 +98,7 @@ export class AuthentificationService {
       this.user.next(null);
       localStorage.removeItem('userData');
       this.router.navigate(['']);
-    }, 300000);
+    }, 5 * 60 * 1000);
   }
 
   private handleAuthentification(token: string) {

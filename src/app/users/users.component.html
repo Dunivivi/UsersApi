@@ -14,7 +14,7 @@
       >
         <img
           class="card-img-top card-img"
-          src="{{ face[user.id - 1].url }}"
+          src="../../assets/unknown-photo.png"
           alt="Card image cap"
         />
         <div class="card-body">
@@ -30,10 +30,12 @@
               <i class="bi bi-eye"></i>
               <span class="tooltip-text">View</span></a
             >
-            <a class="icon-feature"
-              ><i class="bi bi-database-gear" (click)="onUpdate(user.id)"></i>
-              <span class="tooltip-text">Update</span></a
-            >
+            <a
+              class="icon-feature"
+              [routerLink]="['/users/update', user.name, user.id]"
+              ><i class="bi bi-database-gear"></i>
+              <span class="tooltip-text">Update</span>
+            </a>
             <a class="icon-feature"
               ><i class="bi bi-trash" (click)="onDelete(user.id)"></i>
               <span class="tooltip-text">Delete</span></a

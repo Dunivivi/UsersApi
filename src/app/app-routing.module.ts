@@ -18,6 +18,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'users/add', component: UsersAddComponent, canActivate: [AuthGuard] },
+  { path: 'users/update/:name/:id', component: UsersAddComponent },
   { path: 'users/:name/:id', component: UserComponent },
   { path: 'auth', component: Authentification },
 

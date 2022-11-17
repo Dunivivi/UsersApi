@@ -53,6 +53,7 @@
 }
 
 .bi:hover {
+  cursor: pointer;
   transform: scale(1.3);
   transition-delay: 0s;
 }

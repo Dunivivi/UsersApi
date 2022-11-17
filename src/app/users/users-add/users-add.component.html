@@ -19,9 +19,8 @@
                   class="form-control"
                   id="name"
                   placeholder="Vasiliy"
-                  ngModel
+                  [(ngModel)]="name"
                   name="name"
-                  #name="ngModel"
                 />
               </div>
               <div class="col-md-4">
@@ -43,9 +42,8 @@
                   class="form-control"
                   id="username"
                   placeholder="Mishka"
-                  ngModel
+                  [(ngModel)]="username"
                   name="username"
-                  #username="ngModel"
                 />
               </div>
               <div class="col-md-4">
@@ -55,10 +53,9 @@
                   class="form-control"
                   id="email"
                   placeholder="vasiliyignatov@mail.com"
-                  ngModel
+                  [(ngModel)]="email"
                   name="email"
                   email
-                  #email="ngModel"
                 />
               </div>
               <div class="col-md-4">
@@ -70,9 +67,8 @@
                   class="form-control"
                   id="phoneNumber"
                   placeholder="37360606060"
-                  ngModel
+                  [(ngModel)]="phoneNumber"
                   name="phoneNumber"
-                  #phoneNumber="ngModel"
                 />
               </div>
               <div class="col-md-4">
@@ -82,9 +78,8 @@
                   class="form-control"
                   id="webSite"
                   placeholder="esempla.com"
-                  ngModel
+                  [(ngModel)]="webSite"
                   name="webSite"
-                  #webSite="ngModel"
                 />
               </div>
             </div>
@@ -103,9 +98,8 @@
                   class="form-control"
                   id="street"
                   placeholder="Ion Creanga"
-                  ngModel
+                  [(ngModel)]="street"
                   name="street"
-                  #street="ngModel"
                 />
               </div>
               <div class="col-md-3">
@@ -115,9 +109,8 @@
                   class="form-control"
                   id="suite"
                   placeholder="Apt. 43543"
-                  ngModel
+                  [(ngModel)]="suite"
                   name="suite"
-                  #suite="ngModel"
                 />
               </div>
               <div class="col-md-3">
@@ -127,24 +120,47 @@
                   class="form-control"
                   id="city"
                   placeholder="Chisinau"
-                  ngModel
+                  [(ngModel)]="city"
                   name="city"
-                  #city="ngModel"
                 />
               </div>
               <div class="col-md-3">
-                <label for="zip" class="form-label">Zip</label>
+                <label for="zipcode" class="form-label">Zip</label>
                 <input
                   type="text"
                   class="form-control"
                   id="zip"
                   placeholder="MD-3541"
-                  ngModel
-                  name="zip"
-                  #zip="ngModel"
+                  [(ngModel)]="zipcode"
+                  name="zipcode"
                 />
               </div>
+              <div class="row user-data" id="user-company" ngModelGroup="geo">
+                <div class="col-md-3">
+                  <label for="lat" class="form-label">Lat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lat"
+                    placeholder="47.656"
+                    [(ngModel)]="lat"
+                    name="lat"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="lng" class="form-label">Long</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lng"
+                    placeholder="-34.2343"
+                    [(ngModel)]="lng"
+                    name="lng"
+                  />
+                </div>
+              </div>
             </div>
+
             <div class="card-header py-3 subcard">
               <h5 class="mb-0">Company</h5>
             </div>
@@ -160,9 +176,8 @@
                   class="form-control"
                   id="companyName"
                   placeholder="Esempla Systems"
-                  ngModel
-                  name="companyName"
-                  #companyName="ngModel"
+                  [(ngModel)]="companyName"
+                  name="name"
                 />
               </div>
               <div class="col-md-2">
@@ -172,9 +187,8 @@
                   class="form-control"
                   id="bs"
                   placeholder="harness e-market"
-                  ngModel
+                  [(ngModel)]="bs"
                   name="bs"
-                  #bs="ngModel"
                 />
               </div>
               <div class="col-md-7">
@@ -184,9 +198,8 @@
                   class="form-control"
                   id="catchPhrase"
                   placeholder="Multi-layered client-server neural-net"
-                  ngModel
+                  [(ngModel)]="catchPhrase"
                   name="catchPhrase"
-                  #catchPhrase="ngModel"
                 />
               </div>
             </div>

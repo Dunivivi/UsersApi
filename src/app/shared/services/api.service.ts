@@ -42,11 +42,9 @@ export class ApiService {
     const userData: {
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));
-
     let headers = new HttpHeaders({
       Authorization: `Bearer ${userData.token}`,
     });
-
     return this.http.get<IUser>(`${this.dockerUrl}/api/users`, {
       observe: 'response',
       headers: headers,
@@ -66,18 +64,27 @@ export class ApiService {
     });
   }
 
-  updateUser() {}
-
-  createUser(user: User): Observable<any> {
+  addUserDocker(user: User): Observable<any> {
     const userData: {
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));
-
     let headers = new HttpHeaders({
       Authorization: `Bearer ${userData.token}`,
     });
-
     return this.http.post(`${this.dockerUrl}/api/users`, user, {
+      headers: headers,
+    });
+  }
+
+  updateUser(user: User): Observable<any> {
+    const userData: {
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${userData.token}`,
+    });
+    console.log(user);
+    return this.http.put(`${this.dockerUrl}/api/users`, user, {
       headers: headers,
     });
   }
@@ -86,29 +93,14 @@ export class ApiService {
     const userData: {
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));
-
     let headers = new HttpHeaders({
       Authorization: `Bearer ${userData.token}`,
     });
-
     return this.http.delete<IUser>(`${this.dockerUrl}/api/users/${id}`, {
       observe: 'body',
       headers: headers,
     });
   }
-
-  // addUserDocker(user: IUser) {
-  //   const userData: {
-  //     token: string;
-  //   } = JSON.parse(localStorage.getItem('userData'));
-  //   let headers = new HttpHeaders({
-  //     Authorization: `Bearer ${userData.token}`,
-  //   });
-  //   console.log(user);
-  //   return this.http.post<IUser>(`${this.dockerUrl}/api/users`, user, {
-  //     headers: headers,
-  //   });
-  // }
 
   //==============================Firebase=========================
 

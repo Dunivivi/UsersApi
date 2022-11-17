@@ -82,19 +82,6 @@ export class AuthentificationService {
       );
   }
 
-  // .subscribe((response) => {
-  //   console.log(response);
-  // });
-
-  // getUsers(header) {
-  //   const headers = new HttpHeaders({ Authorization: `Bearer ${header}` });
-  //   return this.http
-  //     .get(this.dockerUrl + '/api/users', { headers })
-  //     .subscribe((response) => {
-  //       console.log(response);
-  //     });
-  // }
-
   autoLogin() {
     const userData: {
       token: string;
@@ -106,12 +93,18 @@ export class AuthentificationService {
     this.user.next(loadedUser);
   }
 
+  autoLogout() {
+    setTimeout(() => {
+      this.user.next(null);
+      localStorage.removeItem('userData');
+      this.router.navigate(['']);
+    }, 300000);
+  }
+
   private handleAuthentification(token: string) {
     const user = new User(token);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
-    // console.log(user);
-    // console.log(this.user);
   }
 
   private handleError(errorResponse: HttpErrorResponse) {

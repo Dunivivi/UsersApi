@@ -74,6 +74,7 @@ export class Authentification implements OnInit {
         (res) => {
           console.log(res);
           this.isLoading = false;
+          this.authService.autoLogout();
           this.router.navigate(['']);
         },
         (error) => {

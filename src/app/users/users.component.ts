@@ -35,7 +35,7 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.apiService.populateDbDocker();
+    this.apiService.populateDbDocker();
     this.loadPage(1);
     this.face = this.faces.getImg();
     this.navbarService.filter.subscribe((response) => {
@@ -52,13 +52,14 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  onUpdate(id: number) {}
-
   onDelete(id: number) {
+    this.isLoading = true;
     this.apiService.deleteUserById(id).subscribe((response) => {
       console.log(response);
     });
-    this.loadPage(1);
+    setTimeout(() => {
+      location.reload();
+    }, 500);
   }
 
   // ==========================Firebase===============

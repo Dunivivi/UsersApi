@@ -3,17 +3,17 @@ import { IAddress } from './address';
 import { ICompany } from './company';
 
 export interface IUser {
-  address: IAddress;
-  company: ICompany;
-  email: string;
-  id: number;
-  name: string;
-  username: string;
-  website: string;
-  phone: string;
+  address?: IAddress;
+  company?: ICompany;
+  email?: string;
+  id?: number;
+  name?: string;
+  username?: string;
+  website?: string;
+  phone?: string;
 }
 
-export class User {
+export class User implements IUser {
   constructor(
     public id?: number,
     public name?: string,

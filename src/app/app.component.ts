@@ -1,7 +1,5 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService } from './auth/authentification.service';
-import { ApiService } from './shared/services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +7,8 @@ import { ApiService } from './shared/services/api.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  name = 'Jquery Integration With Angular!';
+  isJqueryWorking: any;
   title = 'users-api';
 
   constructor(private authService: AuthentificationService) {}

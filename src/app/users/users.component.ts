@@ -1,12 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { NavbarService } from '../navbar/navbar.service';
 import { IUser } from '../shared/interfaces/user';
 import { ApiService } from '../shared/services/api.service';
-import { DataStorageService } from '../shared/services/datastorage.service';
 import { Faces } from '../shared/services/face';
-import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-users',
@@ -24,18 +21,15 @@ export class UsersComponent implements OnInit {
   paginateData: any = [];
   subscription: Subscription;
   filterTerm = '';
-
   isLoading = false;
 
   constructor(
     private apiService: ApiService,
     private faces: Faces,
-    private dataStorage: DataStorageService,
     private navbarService: NavbarService
   ) {}
 
   ngOnInit() {
-    this.apiService.populateDbDocker();
     this.loadPage(1);
     this.face = this.faces.getImg();
     this.navbarService.filter.subscribe((response) => {

@@ -32,14 +32,6 @@ export class UserComponent implements OnInit {
     this.getUser(id);
   }
 
-  // getUser(id: number) {
-  //   this.users.getUser(id).subscribe((response) => {
-  //     this.user = response.body;
-  //     console.log(this.user);
-  //     this.isLoading = false;
-  //   });
-  // }
-
   getUser(id: number) {
     this.apiService.getUserById(id).subscribe((response) => {
       this.user = response.body;

@@ -25,7 +25,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  populateDbDocker() {
+  populateDbDocker(): Observable<any> {
     const userData: {
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));
@@ -64,7 +64,7 @@ export class ApiService {
     });
   }
 
-  addUserDocker(user: User): Observable<any> {
+  addUserDocker(user: IUser): Observable<any> {
     const userData: {
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));
@@ -76,7 +76,7 @@ export class ApiService {
     });
   }
 
-  updateUser(user: User): Observable<any> {
+  updateUser(user: IUser): Observable<any> {
     const userData: {
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));

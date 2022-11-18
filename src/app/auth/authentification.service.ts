@@ -1,26 +1,7 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
-import { stringLength } from '@firebase/util';
-import {
-  BehaviorSubject,
-  catchError,
-  map,
-  Observable,
-  tap,
-  throwError,
-} from 'rxjs';
-import { IUser } from '../shared/interfaces/user';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
 
 export interface AuthentificationData {
@@ -33,12 +14,7 @@ export class AuthentificationService {
   user = new BehaviorSubject<User>(null);
   dockerUrl = 'http://localhost:8080';
 
-  constructor(
-    private http: HttpClient,
-    public angularFireAuth: AngularFireAuth,
-    public angluarFirestore: AngularFirestore,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signUp(email: string, password: string) {
     return this.http

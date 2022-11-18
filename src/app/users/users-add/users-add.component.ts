@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
-//import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { IUser, User } from 'src/app/shared/interfaces/user';
-import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
@@ -72,7 +70,7 @@ export class UsersAddComponent implements OnInit {
     }
   }
 
-  covertFromForm(form: any): User {
+  covertFromForm(form: any): IUser {
     return {
       ...new User(),
       id: this.id,

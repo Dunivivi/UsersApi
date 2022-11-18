@@ -1,16 +1,10 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, filter, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthentificationService } from '../auth/authentification.service';
 import { IUser } from '../shared/interfaces/user';
 import { NavbarService } from './navbar.service';
+declare var $: any;
 
 @Component({
   selector: 'app-navbar',

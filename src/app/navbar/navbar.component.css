@@ -1,3 +1,13 @@
+@font-face {
+  font-family: Oxigen;
+  src: url("../../assets/fonts/Oxygen-Regular.ttf") format("opentype");
+}
+
+.navbar {
+  font-family: "Oxigen", "arial", sans-serif;
+  font-size: 1.1rem;
+}
+
 .navbar-brand {
   margin-left: 20px;
 }

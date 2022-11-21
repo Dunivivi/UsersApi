@@ -1,4 +1,80 @@
+@keyframes pan {
+  100% {
+    background-position: 15% 50%;
+  }
+}
+
+@font-face {
+  font-family: Oxigen;
+  src: url("../../assets/fonts/Oxygen-Regular.ttf") format("opentype");
+}
+
 .home {
-  text-align: center;
-  padding-top: 200px;
+  height: 100%;
+  /* padding-top: 200px; */
+  background-image: url("../../assets/wave-haikei.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: pan 6s infinite alternate linear;
+  /* object-fit: cover; */
+}
+
+.home-top {
+  padding-top: 12rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-text {
+  color: white;
+  font-family: "Oxigen", "arial", sans-serif;
+  font-size: 2rem;
+}
+h6.home-text {
+  font-size: 0.7rem;
+}
+
+.login-form {
+  display: flex;
+  padding-top: 1rem;
+  justify-content: center;
+}
+
+.login-form button {
+  font-size: 1rem;
+}
+
+@media (min-width: 1441px) {
+  .home-top {
+    padding-top: 20rem;
+  }
+  .home-text {
+    font-size: 5rem;
+  }
+
+  h6.home-text {
+    text-align: center;
+    inline-size: 60rem;
+    overflow-wrap: break-word;
+    font-size: 2rem;
+  }
+
+  .login-form button {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 413px) {
+  .home-text {
+    font-size: 1.5rem;
+  }
+
+  h6.home-text {
+    text-align: center;
+    inline-size: 18rem;
+    overflow-wrap: break-word;
+    font-size: 0.8rem;
+  }
 }

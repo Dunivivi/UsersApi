@@ -1,21 +1,15 @@
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
 @keyframes pan {
   100% {
     background-position: 15% 50%;
   }
 }
 
-body {
+/* body {
   height: 100%;
-}
+} */
 
 .form-div {
-  height: 650px;
+  height: 100%;
   display: grid;
   background-image: url(../../assets/low-poly-grid-haikei.svg);
   background-repeat: no-repeat;
@@ -62,4 +56,10 @@ label {
 
 .form-button {
   margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
 }
